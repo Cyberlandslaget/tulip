@@ -1,5 +1,5 @@
 import { useSearchParams, Link, useParams, useNavigate } from "react-router-dom";
-import React, { ChangeEvent, useDeferredValue, useEffect, useState } from "react";
+import React, { ChangeEvent, useDeferredValue, useEffect, useState, CSSProperties } from "react";
 import { useHotkeys } from 'react-hotkeys-hook';
 import { FlowData, FullFlow } from "../types";
 import { Buffer } from "buffer";
@@ -87,9 +87,15 @@ function highlightText(flowText: string, search_string: string, flag_string: str
     }
     const searchClasses = "bg-orange-200 rounded-sm"
     const flagClasses = "bg-red-200 rounded-sm"
-    return <span>{ parts.map((part, i) => 
-        <span key={i} className={ (search_string !== '' && search_regex.test(part)) ? searchClasses : (flag_regex.test(part) ? flagClasses : '') }>
-            { part }
+    const lineWrapStyle: CSSProperties = {
+      whiteSpace: "pre-wrap",
+      wordBreak: "break-all"
+    } as React.CSSProperties;
+    return <span>{
+      parts.map(
+        (part, i) =>
+          <span key={i} className={(search_string !== '' && search_regex.test(part)) ? searchClasses : (flag_regex.test(part) ? flagClasses : '')} style={lineWrapStyle}>
+        { part }
         </span>)
     }</span>;
   } catch(error) {
