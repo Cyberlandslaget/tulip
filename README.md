@@ -1,6 +1,10 @@
-# 🌷 Tulip
+# 🌷 Tulip (forked)
 
 Tulip is a flow analyzer meant for use during Attack / Defence CTF competitions. It allows players to easily find some traffic related to their service and automatically generates python snippets to replicate attacks.
+
+## Changes from original project
+
+-   Wrap lines in request flow
 
 ## Origins
 
